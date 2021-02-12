@@ -4,8 +4,10 @@ public class Chapter1 {
   public static void main(String[] args) {
 //    printNumbers(10);
 //    print1toN(10);
-    System.out.println(factorial(3));
-    System.out.println(factorialRecursive(3));
+//    System.out.println(factorial(3));
+//    System.out.println(factorialRecursive(3));
+
+    hanoi(4, 'a', 'b', 'c');
   }
 
   public static void printNumbers(int n){
@@ -38,5 +40,15 @@ public class Chapter1 {
     }
 
     return n * factorialRecursive(n - 1);
+  }
+
+  public static void hanoi(int n, char from, char aux, char dest){
+    if (n == 1){
+      System.out.println(from + " -> " + dest);
+    } else {
+      hanoi(n - 1, from, dest, aux);
+      System.out.println(from + " -> " + dest);
+      hanoi(n - 1, aux, from, dest);
+    }
   }
 }
