@@ -2,8 +2,10 @@ package com.codurance.recursion;
 
 public class Chapter1 {
   public static void main(String[] args) {
-    printNumbers(10);
-    print1toN(10);
+//    printNumbers(10);
+//    print1toN(10);
+    System.out.println(factorial(3));
+    System.out.println(factorialRecursive(3));
   }
 
   public static void printNumbers(int n){
@@ -19,5 +21,22 @@ public class Chapter1 {
       print1toN(n - 1);
       System.out.println(n);
     }
+  }
+
+  public static int factorial(int n){
+    int result = 1;
+    for (int i = n; i > 1; i--){
+      result = i * result;
+    }
+
+    return result;
+  }
+
+  public static int factorialRecursive(int n){
+    if (n == 1){
+      return 1;
+    }
+
+    return n * factorialRecursive(n - 1);
   }
 }
