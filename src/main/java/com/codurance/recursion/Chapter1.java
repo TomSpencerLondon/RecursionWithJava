@@ -2,10 +2,10 @@ package com.codurance.recursion;
 
 public class Chapter1 {
   public static void main(String[] args) {
-//    printNumbers(10);
+    printNumbers(10);
     print1toN(10);
-//    System.out.println(factorial(3));
-//    System.out.println(factorialRecursive(3));
+    System.out.println(factorial(3));
+    System.out.println(factorialRecursive(3));
 
     hanoi(4, 'a', 'b', 'c');
 
