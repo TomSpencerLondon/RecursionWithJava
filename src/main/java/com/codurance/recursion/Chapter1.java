@@ -10,6 +10,8 @@ public class Chapter1 {
     hanoi(4, 'a', 'b', 'c');
 
     System.out.println(countEvensInArray(new int[]{1, 2, 3, 4, 5, 6}));
+
+    System.out.println(fibonacci(8));
   }
 
   public static void printNumbers(int n) {
@@ -65,5 +67,11 @@ public class Chapter1 {
     if (arr[i] % 2 == 0) result++;
 
     return result;
+  }
+
+  public static int fibonacci(int x) {
+    if (x <= 0) return 0;
+    if (x == 1) return 1;
+    return fibonacci(x - 1) + fibonacci(x - 2);
   }
 }
