@@ -1,5 +1,7 @@
 package com.codurance.recursion.module2;
 
+import java.util.Stack;
+
 public class Presentation {
   public static void main(String[] args) {
     int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -8,6 +10,15 @@ public class Presentation {
     printBackward(array);
     printBackwardRecursive(array);
     sumArray2(new int[]{1, 2, 3});
+
+    Stack stack = new Stack<Integer>();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+//    insertToBottom(stack, 0);
+//    System.out.println(stack.toString());
+    insertToBottomRecursive(stack, 0);
+    System.out.println(stack.toString());
   }
 
   public static void printForward(int[] arr) {
@@ -66,5 +77,31 @@ public class Presentation {
     if (i == arr.length) return;
     r.result += arr[i];
     sumArray2(arr, i + 1, r);
+  }
+
+  // Insert to the Bottom of the Stack
+  public static void insertToBottom(Stack<Integer> stack, int number){
+    Stack<Integer> temp = new Stack<Integer>();
+
+    while (!stack.isEmpty()) {
+      Integer element = stack.pop();
+      temp.push(element);
+    }
+    stack.push(number);
+
+    while(!temp.isEmpty()){
+      Integer element = temp.pop();
+      stack.push(element);
+    }
+  }
+
+  public static void insertToBottomRecursive(Stack<Integer> stack, int number) {
+    if (stack.isEmpty()){
+      stack.push(number);
+      return;
+    }
+    Integer item = stack.pop();
+    insertToBottomRecursive(stack, number);
+    stack.push(item);
   }
 }
