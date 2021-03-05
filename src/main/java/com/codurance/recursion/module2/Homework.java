@@ -1,6 +1,8 @@
 package com.codurance.recursion.module2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Homework {
 
@@ -43,5 +45,25 @@ public class Homework {
     }
 
     return minMax(arr, counter + 1, min, max);
+  }
+  static ArrayList<Integer> array = new ArrayList<>();
+
+  public static List<Integer> flatten(int[][] arr){
+    flattenFirst(arr, 0);
+
+    return array;
+  }
+
+  private static void flattenFirst(int[][] arr, int counter){
+    flattenSecond(arr, counter, 0);
+  }
+
+  private static void flattenSecond(int[][] arr, int counter, int counter2){
+    if (counter2 > arr[counter].length){
+      return;
+    }
+
+    array.add(arr[counter][counter2]);
+    flattenSecond(arr, counter, counter2 + 1);
   }
 }
