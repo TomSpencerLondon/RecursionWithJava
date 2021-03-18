@@ -21,20 +21,37 @@ public class CoinChanger {
 
 
   public static void main(String[] args) {
-    int[] coins = new int[]{2, 5, 10, 50, 100};
-    System.out.println(changeMaker(coins, 48));
+    int[] testInputCoins1 = {1, 2, 3};
+    int testAmount1 = 11;
+
+    assert coinChange(testInputCoins1, testAmount1) == 3;
+
+    System.out.println("Explanation: 11 = 5 + 5 + 1");
+
+    int[] testInputCoins2 = {2};
+    int testAmount2 = 3;
+
+    assert coinChange(testInputCoins2, testAmount2) == -1;
+    System.out.println("Passed all test cases");
   }
 
-  private static int changeMaker(int[] coins, int amount) {
-    int numberOfCoins = 0;
-    for (int i = coins.length - 1; i >= 0; i -= 1){
-      if (coins[i] <= amount){
-        amount -= coins[i];
-        numberOfCoins += 1;
-        i++;
-      }
+  public static int coinChange(int[] coins, int amount) {
+    if (amount < 1) return 0;
+    return coinChange(coins, amount, new int[amount]);
+  }
+
+  private static int coinChange(int[] coins, int rem, int[] count) {
+    if (rem < 0) return -1;
+    if (rem == 0) return 0;
+    if (count[rem - 1] != 0) return count[rem - 1];
+    int min = Integer.MAX_VALUE;
+    for(int coin : coins) {
+      int res = coinChange(coins, rem - coin, count);
+      if (res >= 0 && res < min)
+        min = 1 + res;
     }
 
-    return numberOfCoins;
+    count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
+    return count[rem - 1];
   }
 }
