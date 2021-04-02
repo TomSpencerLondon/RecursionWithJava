@@ -37,6 +37,10 @@ public class Presentation {
     }
   }
 
+  //isPalindrome(poop): p == p && isPalindrome(oo)
+  // isPalindrome(pollop): p == p && o == o && l == l
+  // && true;
+  // isPalindrome(holh): h == h && o == l && true;
   public static boolean isPalindrome(String s) {
     if (s.length() <= 1) return true;
 
