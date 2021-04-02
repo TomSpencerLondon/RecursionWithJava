@@ -9,6 +9,7 @@ package com.codurance.recursion.module3;
 public class Presentation {
   public static void main(String[] args) {
     System.out.println(moveCount(4));
+    hanoi(3, 'a', 'b', 'c');
   }
   // in order to take n disks from 1 - 3 using 2
   // move n - 1 from 1 to 2 using 3
@@ -19,7 +20,23 @@ public class Presentation {
     System.out.println(n);
     return 2 * moveCount(n - 1) + 1;
   }
+                                        //a        b         c
+  public static void hanoi(int n, char from, char aux, char dest) {
+    if (n == 1) {
+      System.out.println(from + " -> " + dest);
+    }
+    else {
+      //            a      c     b
+      hanoi(n - 1, from, dest, aux);
+
+      System.out.println(from + " -> " + dest);
+      //              b    a      c
+      hanoi(n - 1, aux, from, dest);
+    }
+  }
 }
+
+//  | | ...|
 
 
 // 4 - 3 - 2 - 1
