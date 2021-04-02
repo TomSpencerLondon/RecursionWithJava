@@ -10,6 +10,8 @@ public class Presentation {
   public static void main(String[] args) {
     System.out.println(moveCount(4));
     hanoi(3, 'a', 'b', 'c');
+    System.out.println(isPalindrome("HelloolleH"));
+    System.out.println(isPalindromeFor("HelloolleH"));
   }
   // in order to take n disks from 1 - 3 using 2
   // move n - 1 from 1 to 2 using 3
@@ -33,6 +35,26 @@ public class Presentation {
       //              b    a      c
       hanoi(n - 1, aux, from, dest);
     }
+  }
+
+  public static boolean isPalindrome(String s) {
+    if (s.length() <= 1) return true;
+
+    return s.charAt(0) == s.charAt(s.length() - 1)
+        && isPalindrome(s.substring(1, s.length() - 1));
+  }
+
+  public static boolean isPalindromeFor(String s) {
+    if (s.length() == 1)
+      return true;
+
+    for (int i = 0; i < s.length(); i++){
+      if(s.charAt(i) != s.charAt((s.length() - 1) - i)){
+        return false;
+      }
+    }
+
+    return true;
   }
 }
 
